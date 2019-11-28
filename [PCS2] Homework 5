@@ -1,0 +1,91 @@
+####PROT
+def prot(x, codon):
+    prot = []
+    y = [x[xx:xx+3] for xx in range(0, len(x), 3)]
+    for i in y:
+        prot.append(codon.get(i))
+        if codon.get(i) == 'Stop':
+            break
+    prot.remove('Stop')
+    return(''.join(map(str,prot)))
+x = input()
+codon={  'UUU': 'F',     'CUU': 'L',     'AUU': 'I',     'GUU': 'V',
+    'UUC': 'F',     'CUC': 'L',     'AUC': 'I',     'GUC': 'V',
+    'UUA': 'L',     'CUA': 'L',     'AUA': 'I',     'GUA': 'V',
+    'UUG': 'L',     'CUG': 'L',     'AUG': 'M',     'GUG': 'V',
+    'UCU': 'S',     'CCU': 'P',     'ACU': 'T',     'GCU': 'A',
+    'UCC': 'S',     'CCC': 'P',     'ACC': 'T',     'GCC': 'A',
+    'UCA': 'S',     'CCA': 'P',     'ACA': 'T',     'GCA': 'A',
+    'UCG': 'S',     'CCG': 'P',     'ACG': 'T',     'GCG': 'A',
+    'UAU': 'Y',     'CAU': 'H',     'AAU': 'N',     'GAU': 'D',
+    'UAC': 'Y',     'CAC': 'H',     'AAC': 'N',     'GAC': 'D',
+    'UAA': 'Stop',     'CAA': 'Q',     'AAA': 'K',     'GAA': 'E',
+    'UAG': 'Stop',     'CAG': 'Q',     'AAG': 'K',     'GAG': 'E',
+    'UGU': 'C',     'CGU': 'R',     'AGU': 'S',     'GGU': 'G',
+    'UGC': 'C',     'CGC': 'R',     'AGC': 'S',     'GGC': 'G',
+    'UGA': 'Stop',     'CGA': 'R',     'AGA': 'R',     'GGA': 'G',
+    'UGG': 'W',     'CGG': 'R',     'AGG': 'R',     'GGG': 'G'}
+print(prot(x, codon))
+
+
+
+####SPLC
+def splc(x, codon):
+    geneDict = {}
+    geneName = 'x'
+    fastaSeq = ''
+    for seqline in x:
+        if seqline[0] == '>':
+            geneDict.update({geneName: fastaSeq})
+            geneName = seqline[1:]
+            fastaSeq = ''
+        else:
+            fastaSeq += seqline
+    geneDict.update({geneName: fastaSeq})
+    geneDict.pop('x')
+    seq = list(geneDict.values())
+    seq1 = seq[0]
+    introns = seq[1:]
+    for i in introns:
+        if i in seq1:
+            seq1 = seq1.replace(i,'')
+        prot = []
+        y = [seq1[xx:xx+3] for xx in range(0, len(seq1), 3)]
+        for j in y:
+            prot.append(codon.get(j))
+            if codon.get(j) == 'Stop':
+                break
+    prot.remove('Stop')
+    return(''.join(map(str,prot)))
+x = list(map(str, input().split()))
+codon={  'TTT': 'F',     'CTT': 'L',     'ATT': 'I',     'GTT': 'V',
+    'TTC': 'F',     'CTC': 'L',     'ATC': 'I',     'GTC': 'V',
+    'TTA': 'L',     'CTA': 'L',     'ATA': 'I',     'GTA': 'V',
+    'TTG': 'L',     'CTG': 'L',     'ATG': 'M',     'GTG': 'V',
+    'TCT': 'S',     'CCT': 'P',     'ACT': 'T',     'GCT': 'A',
+    'TCC': 'S',     'CCC': 'P',     'ACC': 'T',     'GCC': 'A',
+    'TCA': 'S',     'CCA': 'P',     'ACA': 'T',     'GCA': 'A',
+    'TCG': 'S',     'CCG': 'P',     'ACG': 'T',     'GCG': 'A',
+    'TAT': 'Y',     'CAT': 'H',     'AAT': 'N',     'GAT': 'D',
+    'TAC': 'Y',     'CAC': 'H',     'AAC': 'N',     'GAC': 'D',
+    'TAA': 'Stop',     'CAA': 'Q',     'AAA': 'K',     'GAA': 'E',
+    'TAG': 'Stop',     'CAG': 'Q',     'AAG': 'K',     'GAG': 'E',
+    'TGT': 'C',     'CGT': 'R',     'AGT': 'S',     'GGT': 'G',
+    'TGC': 'C',     'CGC': 'R',     'AGC': 'S',     'GGC': 'G',
+    'TGA': 'Stop',     'CGA': 'R',     'AGA': 'R',     'GGA': 'G',
+    'TGG': 'W',     'CGG': 'R',     'AGG': 'R',     'GGG': 'G'}
+print(splc(x, codon))
+
+
+
+####TRAN
+####HAMM
+####TREE
+####PDST
+####SSEQ
+####LCSQ
+####ORF
+####PERM
+####GRPH
+####INOD
+
