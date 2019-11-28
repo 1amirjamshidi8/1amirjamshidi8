@@ -1,0 +1,685 @@
+#####Find the Runner-Up Score!
+if __name__ == '__main__':
+    n = int(input())
+    arr = map(int, input().split())
+
+list2 = list(set(arr))
+list2.remove(max(list2))
+print(max(list2))
+
+
+
+#####Find the percentage
+if __name__ == '__main__':
+    n = int(input())
+    student_marks = {}
+    for _ in range(n):
+        name, *line = input().split()
+        scores = list(map(float, line))
+        student_marks[name] = scores
+    query_name = input()
+
+list0 = list(student_marks[query_name])
+sums = sum(list0)
+nums = len(list0)
+avg = sums/nums
+print("{0:.2f}".format(avg))
+
+
+
+#####Tuples
+if __name__ == '__main__':
+    n = int(input())
+    integer_list = map(int, input().split())
+
+k = tuple(integer_list)
+print(hash(k))
+
+
+
+#####sWAP cASE
+def swap_case(s):
+    return s.swapcase()
+
+
+
+#####What's Your Name?
+def print_full_name(a, b):
+    print("Hello"," ", a," ", b, "! You just delved into python.",sep="")
+
+
+
+#####Mod Divmod
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+a = int(input())
+b = int(input())
+print(int(a/b))
+print(a%b)
+print(divmod(a,b))
+
+
+
+#####String Split and Join
+def split_and_join(line):
+    # write your code here
+    line1 = line.split()
+    line2 = "-".join(line1)
+    return(line2)
+
+
+
+#####Mutations
+def mutate_string(string, position, character):
+    return(string[:position]+character+string[position+1:])
+
+
+
+#####Capitalize!
+
+
+# Complete the solve function below.
+def solve(s):
+    return " ".join([words.capitalize() for words in s.split(" ")])
+
+
+
+#####List Comprehensions
+if __name__ == '__main__':
+    x = int(input())
+    y = int(input())
+    z = int(input())
+    n = int(input())
+
+print([[a,b,c] for a in range(x+1) for b in range(y+1) for c in range(z+1) if a + b + c != n])
+
+
+
+#####Nested Lists
+if __name__ == '__main__':
+    grades=[]
+    grades2=[]
+    for _ in range(int(input())):
+        name = input()
+        score = float(input())
+        grades.append([name, score])
+        grades2.append(score)
+        grades=sorted(grades)
+    for secondlast, last in grades:
+        gradeset=set(grades2)
+        gradeset2=list(gradeset)
+        gradesetfin=sorted(gradeset2)
+        if last==gradesetfin[1]:
+            print(secondlast)
+
+
+
+#####Find a string
+def count_substring(string, sub_string):
+    count=0
+    for i in range(len(string)):
+        if len(string)>len(sub_string):
+            if string.find(sub_string)>=0:
+                count += 1
+            string=string[(string.find(sub_string)+1):]
+    return(count)
+
+
+
+#####String Validators
+if __name__ == '__main__':
+    s = input()
+print(any(i.isalnum()for i in s))
+print(any(i.isalpha()for i in s))
+print(any(i.isdigit()for i in s))
+print(any(i.islower()for i in s))
+print(any(i.isupper()for i in s))
+
+
+
+#####Text Alignment
+#Replace all ______ with rjust, ljust or center. 
+
+thickness = int(input()) #This must be an odd number
+c = 'H'
+
+#Top Cone
+for i in range(thickness):
+    print((c*i).rjust(thickness-1)+c+(c*i).ljust(thickness-1))
+
+#Top Pillars
+for i in range(thickness+1):
+    print((c*thickness).center(thickness*2)+(c*thickness).center(thickness*6))
+
+#Middle Belt
+for i in range((thickness+1)//2):
+    print((c*thickness*5).center(thickness*6))    
+
+#Bottom Pillars
+for i in range(thickness+1):
+    print((c*thickness).center(thickness*2)+(c*thickness).center(thickness*6))    
+
+#Bottom Cone
+for i in range(thickness):
+    print(((c*(thickness-i-1)).rjust(thickness)+c+(c*(thickness-i-1)).ljust(thickness)).rjust(thickness*6))
+
+
+
+#####Text Wrap
+
+
+def wrap(string, max_width):
+    return(textwrap.fill(string, max_width))
+
+
+
+#####Designer Door Mat
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+wide, tall = map(int,input().split())
+a = '.|.'
+b = '-'
+c = 'WELCOME'
+mid = [c.center(tall,b)]
+top = [(a*(2*i+1)).center(tall,b) for i in range(wide//2)]
+bottom = top[::-1]
+print('\n'.join(top+mid+bottom))
+
+
+
+#####String Formatting
+def print_formatted(number):
+    # your code goes here
+    stnd = len(str(bin(n)).replace('0b',''))
+    for i in range(1, n+1):
+        print(str(i).rjust(stnd), str(oct(i)).replace('0o','').rjust(stnd), str(hex(i)).replace('0x','').upper().rjust(stnd), str(bin(i)).replace('0b','').rjust(stnd), sep=' ')
+
+
+
+#####Alphabet Rangoli
+def print_rangoli(size):
+    # your code goes here
+    import string
+    width=4*n-3
+    height=[]
+    a=string.ascii_lowercase
+    b='-'
+    for i in range(n):
+        x = b.join(a[i:n])
+        height.append(x[::-1]+x[1:])
+    for i in range(n-1,0,-1):
+        print(height[i].center(width,b))
+    for i in range(n):
+        print(height[i].center(width,b))
+
+
+
+#####Lists
+if __name__ == '__main__':
+    N = int(input())
+    fin_lists=[]
+    for i in range(N):
+        location = input().split()
+        cmd = str(location[0])
+        if cmd == 'append':
+            fin_lists.append(int(location[1]))
+        elif cmd == 'print':
+            print(fin_lists)
+        elif cmd == 'insert':
+            fin_lists.insert(int(location[1]), int(location[2]))
+        elif cmd == 'reverse':
+            fin_lists.reverse()
+        elif cmd == 'pop':
+            fin_lists.pop()
+        elif cmd == 'sort':
+            fin_lists.sort()
+        elif cmd == 'remove':
+            fin_lists.remove(int(location[1]))
+
+
+
+#####The Minion Game
+def minion_game(string):
+    # your code goes here
+    vowels='aeiou'.upper()
+    kevin=0
+    stuart=0
+    for i in range(len(s)):
+        if s[i] in vowels:
+            kevin+=(len(s)-i)
+        else:
+            stuart+=(len(s)-i)
+    if stuart>kevin:
+        print('Stuart', stuart)
+    elif kevin>stuart:
+        print('Kevin', kevin)
+    elif kevin==stuart:
+        print('Draw')
+
+
+
+#####Introduction to Sets
+def average(array):
+    # your code goes here
+    nums=set(arr)
+    return(sum(nums)/len(nums))
+
+
+
+#####No Idea!
+#Enter your code here. Read input from STDIN. Print output to STDOUT
+if __name__ == '__main__':
+    n,m = map(int,input().split())
+gate = input().split(' ')
+A = set(input().split(' '))
+B = set(input().split(' '))
+lst=0
+for i in gate:
+    if i in A:
+        lst+=1
+    if i in B:
+        lst-=1
+print(lst)
+
+
+
+#####Symmetric Difference!
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+if __name__ == '__main__':
+   _ , M = input(), set(map(int,input().split()))
+   _ , N = input(), set(map(int,input().split()))
+   O = M.difference(N)
+   P = N.difference(M)
+print(*sorted(O.union(P)), sep='\n')
+
+
+
+#####Set.add()
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+if __name__ == '__main__':
+    N = int(input())
+    M = set()
+    for i in range(N):
+        M.add(input())
+    print(len(M))
+
+
+
+#####Set .discard(), .remove() & .pop()
+n = int(input())
+s = set(map(int, input().split()))
+m = int(input())
+for i in range(m):
+    cmd = input().split()
+    if cmd[0] == 'pop':
+        s.pop()
+    elif cmd[0] == 'remove':
+        s.remove(int(cmd[1]))
+    elif cmd[0] == 'discard':
+        s.discard(int(cmd[1]))
+print(sum(s))
+
+
+
+#####Set .union() Operation
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+if __name__ == '__main__':
+   _ , M = input(), set(map(int,input().split()))
+   _ , N = input(), set(map(int,input().split()))
+print(len(N.union(M)))
+
+
+
+#####Set .intersection() Operation
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+if __name__ == '__main__':
+   _ , M = input(), set(map(int,input().split()))
+   _ , N = input(), set(map(int,input().split()))
+print(len(N.intersection(M)))
+
+
+
+#####Set .difference() Operation
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+if __name__ == '__main__':
+   _ , M = input(), set(map(int,input().split()))
+   _ , N = input(), set(map(int,input().split()))
+print(len(M.difference(N)))
+
+
+
+#####Set .symmetric_difference() Operation
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+if __name__ == '__main__':
+   _ , M = input(), set(map(int,input().split()))
+   _ , N = input(), set(map(int,input().split()))
+print(len(N.symmetric_difference(M)))
+
+
+
+#####The Captain's Room
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+K = int(input())
+N = list(map(int,input().split()))
+M = set(N)
+Cap=(float(((sum(M)*K)-(sum(N)))//(K-1)))
+print("{0:.0f}".format(Cap))
+
+
+
+#####Check Subset
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+T = int(input())
+for i in range(T):
+    A = int(input())
+    a = input().split()
+    Aa = set(a)
+    B = int(input())
+    b = input().split()
+    Bb = set(b)
+    print(Aa.issubset(Bb))
+
+
+
+#####Check Strict Superset
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+X = set(input().split())
+N = int(input())
+for i in range(N):
+    A = set(input().split())
+    if not X.issuperset(A):
+        print('False')
+        break
+else:
+    print('True')   
+
+
+
+#####Set Mutations
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+def Iteration(x):
+    cmd = input().split()[0]
+    N = set(map(int, input().split()))
+    if cmd == 'intersection_update':
+        x.intersection_update(N)
+    if cmd == 'update':
+        x.update(N)
+    if cmd == 'symmetric_difference_update':
+        x.symmetric_difference_update(N)
+    if cmd == 'difference_update':
+        x.difference_update(N)
+
+
+_, x = input(), set(map(int, input().split()))
+o = int(input())
+for i in range(o):
+    Iteration(x)
+print(sum(x))
+
+
+
+#####Polar Coordinates
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import cmath
+n = input()
+coordinates = cmath.polar(complex(n))
+print(*coordinates,sep='\n')
+
+
+
+#####Find Angle MBC
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import cmath
+n = input()
+coordinates = cmath.polar(complex(n))
+print(*coordinates,sep='\n')
+
+
+
+#####Triangle Quest 2
+
+
+
+
+for i in range(1,int(input())+1): #More than 2 lines will result in 0 score. Do not leave a blank line also
+    print(((10**i - 1)//9)**2)
+
+
+
+#####Power - Mod Power
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import math
+a = int(input())
+b = int(input())
+m = int(input())
+print(pow(a,b))
+print(pow(a,b,m))
+
+
+
+#####Integers Come In All Sizes
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import math
+a = int(input())
+b = int(input())
+c = int(input())
+d = int(input())
+print(pow(a,b)+pow(c,d))
+
+
+
+#####Triangle Quest
+for i in range(1,int(input())): #More than 2 lines will result in 0 score. Do not leave a blank line also
+    print((pow(10,i)//9)*i)
+
+
+
+#####itertools.product()
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from itertools import product
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+print(*product(a,b))
+
+
+
+#####collections.Counter()
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import Counter
+n = int(input())
+shoe_sizes = Counter(map(int,input().split()))
+m = int(input())
+money = []
+for i in range(m):
+    shoe_size,shoe_price=map(int,input().split())
+    if shoe_sizes[shoe_size]>0:
+        money.append(shoe_price)
+        shoe_sizes.subtract(Counter([shoe_size]))
+print(sum(money))
+
+
+
+#####itertools.permutations()
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from itertools import permutations
+word, permutation_size = input().split()
+letters = sorted(word)
+llist = list(permutations(letters,int(permutation_size)))
+for i in llist:
+    print(*i,sep='')
+
+
+
+#####DefaultDict Tutorial
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import defaultdict
+o,p=map(int,input().split())
+default=defaultdict(list)
+for i in range(o):
+    x = input()
+    default[x].append(i+1)
+for j in range(p):
+    y = input()
+    print(*default.get(y,[-1]))
+
+
+
+#####Collections.namedtuple()
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import namedtuple
+n = int(input())
+numbers = input().split().index('MARKS')
+print(sum([int(input().split()[numbers])for i in range(n)])/n)
+
+
+
+#####Collections.OrderedDict()
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import OrderedDict
+n = int(input())
+o = OrderedDict()
+for i in range(n):
+    list1 = input().split()
+    prices_list = int(list1[-1])
+    list2 = " ".join(list1[:-1])
+    if o.get(list2):
+        o[list2]+=prices_list
+    else:
+        o[list2]=prices_list
+for i,j in o.items():
+    print(i,j)
+
+
+
+#####itertools.combinations()
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from itertools import combinations
+word, size = input().split()
+int_size = int(size)
+for i in range(1, int_size+1):
+    sorted_word = sorted(word)
+    for j in combinations(sorted_word, i):
+        print(''.join(j))
+
+
+
+#####itertools.combinations_with_replacement()
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from itertools import combinations_with_replacement
+word, size = input().split()
+int_size = int(size)
+sorted_word = sorted(word)
+for i in combinations_with_replacement(sorted_word,int_size):
+    print(''.join(i))
+
+
+
+#####Merge the Tools!
+def merge_the_tools(string, k):
+    # your code goes here
+    list1 = []
+    list1_length = 0
+    for i in string:
+        list1_length+=1
+        if i not in list1:
+            list1.append(i)
+        if list1_length == k:
+            print(''.join(list1))
+            list1=[]
+            list1_length=0
+
+
+
+#####Word Order
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import OrderedDict
+O = OrderedDict()
+n = int(input())
+for i in range(n):
+    m = input()
+    O.setdefault(m,0)
+    O[m]+=1
+    dict_length = len(O)
+print(dict_length)
+print(*O.values())
+
+
+
+#####Collections.deque()
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import deque
+x = deque()
+n = int(input())
+for i in range(n):
+    cmd, *args = input().split()
+    getattr(x, cmd)(*args)
+[print(j, end=' ') for j in x]
+
+
+
+#####Compress the String!
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from itertools import groupby
+n = input()
+for i,j in groupby(n):
+    ls = list(j)
+    lnls = len(ls)
+    lx = int(i)
+    print((lnls,lx),end=" ")
+
+
+
+#####Piling Up!
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import deque
+n = int(input())
+for i in range(n):  
+    i, m =input(), deque(map(int, input().split()))
+    sorted_m = sorted(m)
+    re_sorted_m = reversed(sorted_m)
+    for j in re_sorted_m:
+        if m[-1] == j: m.pop()
+        elif m[0] == j: m.popleft()
+        else:
+            print('No')
+            break
+    else: print('Yes')
+
+
+
+#####Iterables and Iterators
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from itertools import combinations
+x = input()
+y = input().split()
+z = int(input())
+v = list(combinations(y,z))
+w = [i for i in v if 'a' in i]
+probability = len(w)/len(v)
+print(probability)
+
+
+
+#####Company Logo
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+if __name__ == '__main__':
+    from collections import Counter
+    s = input()
+    sorted_s = sorted(s)
+    for i,j in Counter(sorted_s).most_common(3):
+        print(i,j)
+
+
+
+#####Maximize It!
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from itertools import product
+n,m = map(int,input().split())
+list1 = (list(map(int, input().split()))[1:] for _ in range(n))
+list2 = map(lambda x: sum(i**2 for i in x)%m, product(*list1))
+maximum = max(list2)
+print(maximum)
