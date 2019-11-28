@@ -1,0 +1,641 @@
+#####Solve Me First
+def solveMeFirst(a,b):
+	# Hint: Type return a+b below
+    return a+b
+
+num1 = input()
+num2 = input()
+res = solveMeFirst(num1,num2)
+print res
+
+
+
+
+#####Simple Array Sum
+#!/bin/python3
+
+import os
+import sys
+
+#
+# Complete the simpleArraySum function below.
+#
+def simpleArraySum(ar):
+    #
+    # Write your code here.
+    #
+    return(sum(ar))
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    ar_count = int(input())
+
+    ar = list(map(int, input().rstrip().split()))
+
+    result = simpleArraySum(ar)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+
+#####Compare the Triplets
+# Complete the compareTriplets function below.
+def compareTriplets(a, b):
+    Alice=0
+    Bob=0
+    for i in range(len(a)):
+        if a[i]>b[i]:
+            Alice+=1
+        elif a[i]<b[i]:
+            Bob+=1
+    return(Alice,Bob)
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    a = list(map(int, input().rstrip().split()))
+
+    b = list(map(int, input().rstrip().split()))
+
+    result = compareTriplets(a, b)
+
+    fptr.write(' '.join(map(str, result)))
+    fptr.write('\n')
+
+    fptr.close()
+
+
+
+
+#####A Very Big Sum
+# Complete the aVeryBigSum function below.
+def aVeryBigSum(ar):
+    return(sum(ar))
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    ar_count = int(input())
+
+    ar = list(map(int, input().rstrip().split()))
+
+    result = aVeryBigSum(ar)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+
+#####Diagonal Difference
+# Complete the 'diagonalDifference' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts 2D_INTEGER_ARRAY arr as parameter.
+#
+
+def diagonalDifference(arr):
+    # Write your code here
+    x=0
+    y=0
+    for i in range(len(arr)):
+        for j in range(len(arr)):
+            if i==j:
+                x+=arr[i][j]
+                y+=arr[i][n-j-1]
+    return(abs(y-x))                    
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    arr = []
+
+    for _ in range(n):
+        arr.append(list(map(int, input().rstrip().split())))
+
+    result = diagonalDifference(arr)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+
+#####Plus Minus
+# Complete the plusMinus function below.
+def plusMinus(arr):
+    lst=[]
+    lst2=[]
+    lst3=[]
+    for i in arr:
+        if i>0:
+            lst.append(i)
+        if i<0:
+            lst2.append(i)
+        if i==0:
+            lst3.append(i)
+    print(len(lst)/n)
+    print(len(lst2)/n)
+    print(len(lst3)/n)
+if __name__ == '__main__':
+    n = int(input())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    plusMinus(arr)
+
+
+
+
+#####Staircase
+# Complete the staircase function below.
+def staircase(n):
+    for i in range(1,n+1):
+        x=str(i*'#')
+        print(x.rjust(n))
+if __name__ == '__main__':
+    n = int(input())
+
+    staircase(n)
+
+
+
+
+#####Mini-Max Sum
+# Complete the miniMaxSum function below.
+def miniMaxSum(arr):
+    lst1=[]
+    lst2=[]
+    for i in arr:
+        lst1.append(i)
+        lst2.append(i)
+    lst1.remove(min(lst1))
+    lst2.remove(max(lst2))
+    print(sum(lst2),sum(lst1))
+        
+if __name__ == '__main__':
+    arr = list(map(int, input().rstrip().split()))
+
+    miniMaxSum(arr)
+
+
+
+
+#####Birthday Cake Candles
+# Complete the birthdayCakeCandles function below.
+def birthdayCakeCandles(ar):
+    return(ar.count(max(ar)))
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    ar_count = int(input())
+
+    ar = list(map(int, input().rstrip().split()))
+
+    result = birthdayCakeCandles(ar)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+
+#####Time Conversion
+# Complete the timeConversion function below.
+#
+def timeConversion(s):
+    #
+    # Write your code here.
+    #
+    time = int(s[:2])
+    AMPM = s[8:]
+    if time==12:
+        time=0
+    if AMPM=='PM':
+        time+=12
+    return("%02d"%time+s[2:8])
+if __name__ == '__main__':
+    f = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = timeConversion(s)
+
+    f.write(result + '\n')
+
+    f.close()
+
+
+
+
+#####Super Reduced String
+# Complete the superReducedString function below.
+def superReducedString(s):
+    lst=[]
+    top=len(lst)-1
+    for i in s:
+        if lst and lst[top] == i:
+            lst.pop()
+        else:
+            lst.append(i)
+    return(''.join(lst)) or 'Empty String'
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = superReducedString(s)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
+
+
+
+
+#####Intro to Tutorial Challenges
+# Complete the introTutorial function below.
+def introTutorial(V, arr):
+    return(arr.index(V))
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    V = int(input())
+
+    n = int(input())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    result = introTutorial(V, arr)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+
+#####CamelCase
+# Complete the camelcase function below.
+def camelcase(s):
+    lst=[]
+    a='abcdefghijklmnopqrstuvwxyz'.upper()
+    for i in list(s):
+        if i in a:
+            lst.append(i)
+    return(len(lst)+1)    
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = camelcase(s)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+
+#####Strong Password
+# Complete the minimumNumber function below.
+def minimumNumber(n, password):
+    # Return the minimum number of characters to make the password strong
+    numbers = "0123456789"
+    lower_case = "abcdefghijklmnopqrstuvwxyz"
+    upper_case = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    special_characters = "!@#$%^&*()-+"
+    nums = 0
+    lowers = 0
+    uppers = 0
+    specials = 0
+    key = 0
+    for i in password:
+        if i in numbers:
+            nums+=1
+        if i in lower_case:
+            lowers+=1
+        if i in upper_case:
+            uppers+=1
+        if i in special_characters:
+            specials+=1
+    if nums > 0:
+        key==key
+    else:
+        key+=1
+    if lowers > 0:
+        key==key
+    else:
+        key+=1
+    if uppers > 0:
+        key==key
+    else:
+        key+=1
+    if specials > 0:
+        key==key
+    else:
+        key+=1
+    x = (key+nums+lowers+uppers+specials)
+    if x < 6:
+        key+=(6-x)
+    return(key)
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    password = input()
+
+    answer = minimumNumber(n, password)
+
+    fptr.write(str(answer) + '\n')
+
+    fptr.close()
+
+
+
+
+#####Mars Exploration
+# Complete the marsExploration function below.
+def marsExploration(s):
+    count=0
+    for i in range(len(s)):
+        if s[i]!='SOS'[i%3]:
+            count+=1
+    return(count)
+        
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = marsExploration(s)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+
+#####HackerRank in a String!
+# Complete the hackerrankInString function below.
+def hackerrankInString(s):
+    h = 'hackerrank'
+    s = s.lower()
+    leng = 0
+    for i in s:
+        if(i==h[leng]):
+            leng+=1
+            if(leng==(len(h))):
+                return('YES')
+    return('NO')
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    q = int(input())
+
+    for q_itr in range(q):
+        s = input()
+
+        result = hackerrankInString(s)
+
+        fptr.write(result + '\n')
+
+    fptr.close()
+
+
+
+
+#####Pangrams
+# Complete the pangrams function below.
+def pangrams(s):
+    s = [x.strip(' ') for x in s]
+    s = [y.lower() for y in s]
+    s = set(s)
+    s = sorted(s)
+    if len(s)==27:
+        return('pangram')
+    else:
+        return('not pangram')
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = pangrams(s)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
+
+
+
+
+#####Counting Sort 1
+# Complete the countingSort function below.
+def countingSort(arr):
+    lst = [0]*100
+    for i in arr:
+        lst[i]+=1
+    return(lst)
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    result = countingSort(arr)
+
+    fptr.write(' '.join(map(str, result)))
+    fptr.write('\n')
+
+    fptr.close()
+
+
+
+
+######Counting Sort 2
+# Complete the countingSort function below.
+def countingSort(arr):
+    return(sorted(arr))
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    result = countingSort(arr)
+
+    fptr.write(' '.join(map(str, result)))
+    fptr.write('\n')
+
+    fptr.close()
+
+
+
+
+#####Gemstones
+# Complete the gemstones function below.
+def gemstones(arr):
+    sets = map(set,arr)
+    gems = set.intersection(*sets)
+    n_gems = len(gems)
+    return(n_gems)
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    arr = []
+
+    for _ in range(n):
+        arr_item = input()
+        arr.append(arr_item)
+
+    result = gemstones(arr)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+
+#####Alternating Characters
+# Complete the alternatingCharacters function below.
+def alternatingCharacters(s):
+    import itertools
+    return(len(s)-len([k for k, g in itertools.groupby(s)]))
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    q = int(input())
+
+    for q_itr in range(q):
+        s = input()
+
+        result = alternatingCharacters(s)
+
+        fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+
+#####Beautiful Binary String
+# Complete the beautifulBinaryString function below.
+def beautifulBinaryString(b):
+    seq = '010'    
+    return(b.count(seq))
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    b = input()
+
+    result = beautifulBinaryString(b)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+
+#####Closest Numbers
+# Complete the closestNumbers function below.
+def closestNumbers(arr):
+    arrs=sorted(arr)
+    lst=[]
+    for i in range(0,n-1):
+        x=arrs[i]
+        y=arrs[i+1]
+        lst.append(abs(x-y))
+    z=min(lst)
+    lst2=[]
+    for i in range(0,n-1):
+        w=arrs[i]
+        g=arrs[i+1]
+        if (abs(w-g))==z:
+            lst2.append(w)
+            lst2.append(g)
+    return(lst2)
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    result = closestNumbers(arr)
+
+    fptr.write(' '.join(map(str, result)))
+    fptr.write('\n')
+
+    fptr.close()
+
+
+
+
+#####The Love-Letter Mystery
+# Complete the theLoveLetterMystery function below.
+def theLoveLetterMystery(s):
+    count = 0
+    x = len(s)
+    for i in range(x//2):
+        diff = abs((ord(s[i]))-ord(s[x-i-1]))        
+        count+=diff
+    return(count)
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    q = int(input())
+
+    for q_itr in range(q):
+        s = input()
+
+        result = theLoveLetterMystery(s)
+
+        fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
+
+
+#####Find the Median
+# Complete the findMedian function below.
+def findMedian(arr):
+    arrs=sorted(arr)
+    return(arrs[int(n/2)])
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    result = findMedian(arr)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
