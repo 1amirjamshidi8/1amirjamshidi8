@@ -99,6 +99,22 @@ print(hamm(x))
 ####LCSQ
 ####ORF
 ####PERM
+from itertools import permutations
+def perm(x):
+    y = []
+    for i in range(1, x+1):
+        y.append(i)
+    z = list(permutations(y, 3))
+    length = len(z)
+    print(length)
+    for j in z:
+        print(*j)
+    return('')
+x = int(input())
+print(perm(x))
+
+
+
 ####GRPH
 ####INOD
 
