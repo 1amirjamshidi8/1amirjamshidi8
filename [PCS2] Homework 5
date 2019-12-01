@@ -95,6 +95,44 @@ print(hamm(x))
 
 ####TREE
 ####PDST
+import itertools
+def pdst(x):
+    geneDict = {}
+    geneName = 'x'
+    fastaSeq = ''
+    for line in x:
+        if line[0] == '>':
+            geneDict.update({geneName: fastaSeq})
+            geneName = line[1:]
+            fastaSeq = ''
+        else:
+            fastaSeq += line
+    geneDict.update({geneName: fastaSeq})
+    geneDict.pop('x')
+    DNA = list(geneDict.values())
+    length = len(DNA[0])
+    perms = list(itertools.product(DNA, repeat=2))
+    lst = []
+    for i in perms:
+        M = i[0]
+        N = i[1]
+        count = 0
+        for j in range(length):
+            if M[j]!=N[j]:
+                count += 0.1
+        lst.append(count)
+    premat = []
+    for w in lst:
+        premat.append('{0:.5f}'.format(w))
+    matrix = [premat[ii:ii+4] for ii in range(0, len(premat), 4)]
+    for z in matrix:
+        print(*z)
+    return('')
+x = list(map(str, input().split()))
+print(pdst(x))
+
+
+
 ####SSEQ
 ####LCSQ
 ####ORF
@@ -104,7 +142,7 @@ def perm(x):
     y = []
     for i in range(1, x+1):
         y.append(i)
-    z = list(permutations(y, 3))
+    z = list(permutations(y))
     length = len(z)
     print(length)
     for j in z:
