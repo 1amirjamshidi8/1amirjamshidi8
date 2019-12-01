@@ -79,6 +79,60 @@ print(splc(x, codon))
 
 
 ####TRAN
+def tran(x):
+    geneDict = {}
+    geneName = 'x'
+    fastaSeq = ''
+    for line in x:
+        if line[0] == '>':
+            geneDict.update({geneName: fastaSeq})
+            geneName = line[1:]
+            fastaSeq = ''
+        else:
+            fastaSeq += line
+    geneDict.update({geneName: fastaSeq})
+    geneDict.pop('x')
+    DNA = list(geneDict.values())
+    S1 = []
+    for m in DNA[0]:
+        S1.append(m)
+    S2 = []
+    for n in DNA[1]:
+        S2.append(n)
+    length = len(S1)
+    transversions = 0
+    transitions = 0
+    for y in range(length):
+        if S1[y] == S2[y]:
+            pass
+        else:
+            if S1[y] == 'A':
+                if S2[y] == 'T' or S2[y] == 'C':
+                    transversions += 1
+                else:
+                    transitions += 1
+            if S1[y] == 'T':
+                if S2[y] == 'A' or S2[y] == 'G':
+                    transversions += 1
+                else:
+                    transitions += 1
+            if S1[y] == 'C':
+                if S2[y] == 'A' or S2[y] == 'G':
+                    transversions += 1
+                else:
+                    transitions += 1
+            if S1[y] == 'G':
+                if S2[y] == 'T' or S2[y] == 'C':
+                    transversions += 1
+                else:
+                    transitions += 1
+    rate = transitions/transversions
+    return(rate)
+x = list(map(str, input().split()))
+print(tran(x))
+
+
+
 ####HAMM
 def hamm(x):
     count = 0
