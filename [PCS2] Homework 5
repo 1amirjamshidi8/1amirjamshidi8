@@ -80,6 +80,19 @@ print(splc(x, codon))
 
 ####TRAN
 ####HAMM
+def hamm(x):
+    count = 0
+    M = x[0]
+    N = x[1]
+    for i in range(len(M)):
+        if M[i]!=N[i]:
+            count+=1
+    return(count)
+x = list(map(str, input().split()))
+print(hamm(x))
+
+
+
 ####TREE
 ####PDST
 ####SSEQ
