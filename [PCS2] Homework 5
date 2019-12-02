@@ -208,5 +208,45 @@ print(perm(x))
 
 
 ####GRPH
-####INOD
+from itertools import permutations
+def grph(x):
+    geneDict = {}
+    geneName = 'x'
+    fastaSeq = ''
+    for line in x:
+        if line[0] == '>':
+            geneDict.update({geneName: fastaSeq})
+            fastaSeq = line[1:]
+            geneName = ''
+        else:
+            geneName += line
+    geneDict.update({geneName: fastaSeq})
+    geneDict.pop('x')
+    DNA = list(geneDict.keys())
+    length = len(DNA[0])
+    perms = list(permutations(DNA, 2))
+    lst = []
+    for i in perms:
+        M = i[0]
+        N = i[1]
+        y = []
+        if M[-3:]==N[:3]:
+            y.append(M)
+            y.append(N)
+        lst.append(y)
+    lst1 = []
+    for v in lst:
+        for vv in v:
+            lst1.append(vv)
+    lst2 = [j for j in lst1 if j != []]
+    lst3 = [geneDict.get(v) for v in lst2]
+    FIN = [lst3[ii:ii+2] for ii in range(0, len(lst3), 2)]
+    for z in FIN:
+        print(*z)
+    return('')
+x = list(map(str, input().split()))
+print(grph(x))
 
+
+
+####INOD
