@@ -188,8 +188,123 @@ print(pdst(x))
 
 
 ####SSEQ
+def sseq(x):
+    geneDict = {}
+    geneName = 'x'
+    fastaSeq = ''
+    for line in x:
+        if line[0] == '>':
+            geneDict.update({geneName: fastaSeq})
+            geneName = line[1:]
+            fastaSeq = ''
+        else:
+            fastaSeq += line
+    geneDict.update({geneName: fastaSeq})
+    geneDict.pop('x')
+    DNA = list(geneDict.values())
+    indices = []
+    m = 0
+    n = 0
+    M = DNA[0]
+    N = DNA[1]
+    while m<len(M) and n<len(N):
+        if M[m] == N[n]:
+            indices.append(m+1)
+            n += 1
+        m += 1
+    print(*indices)
+    return('')
+x = list(map(str, input().split()))
+print(sseq(x))
+
+
+
 ####LCSQ
 ####ORF
+import re
+def orf(x, codon):
+    geneDict = {}
+    geneName = 'x'
+    fastaSeq = ''
+    for line in x:
+        if line[0] == '>':
+            geneDict.update({geneName: fastaSeq})
+            geneName = line[1:]
+            fastaSeq = ''
+        else:
+            fastaSeq += line
+    geneDict.update({geneName: fastaSeq})
+    geneDict.pop('x')
+    DNA = list(geneDict.values())
+    for y in DNA:
+        rRNA = [y.replace('T', 'a').replace('A', 'u').replace('C', 'g').replace('G', 'c').upper()[::-1]]
+        RNA = [y.replace('T', 'U')]
+        yrRNA = rRNA+RNA
+        xrRNA = [''.join(yrRNA)]
+    Scodon = 'AUG'
+    indices = []
+    for y in rRNA:
+        for index in re.finditer(Scodon, y):
+            indie = (index.start())
+            indices.append(indie)
+    substrings = []
+    for y in rRNA:
+        for i in indices:
+            substrings.append(y[i:])
+    protein1 = []
+    for j in substrings:
+        subs = [j[xx:xx+3] for xx in range(0, len(j), 3)]
+        pro = []
+        for k in subs:
+            pro.append(codon.get(k))
+            if codon.get(k) == 'Stop':
+                break
+        protein1.append(pro)
+    indices2 = []
+    for y in RNA:
+        for index in re.finditer(Scodon, y):
+            indie2 = (index.start())
+            indices2.append(indie2)
+    substrings2 = []
+    for y in RNA:
+        for i in indices2:
+            substrings2.append(y[i:])
+    protein2 = []
+    for j in substrings2:
+        subs2 = [j[xx:xx+3] for xx in range(0, len(j), 3)]
+        pro2 = []
+        for k in subs2:
+            pro2.append(codon.get(k))
+            if codon.get(k) == 'Stop':
+                break
+        protein2.append(pro2)
+    protein = protein1+protein2
+    proteins = []
+    for h in protein:
+        if h[-1]=='Stop':
+            proteins.append(h)
+    nproteins = []
+    for l in proteins:
+        if l not in nproteins:
+            nproteins.append(l)
+    for b in nproteins:
+        b.pop()
+    for z in nproteins:
+        print(*z, sep='')
+    return('')
+x = list(map(str, input().split()))
+codon={"UUU": "F", "CUU": "L", "AUU": "I", "GUU": "V", "UUC": "F", "CUC": "L", "AUC": "I", "GUC": "V", "UUA": "L",
+            "CUA": "L", "AUA": "I", "GUA": "V", "UUG": "L", "CUG": "L", "AUG": "M", "GUG": "V", "UCU": "S", "CCU": "P",
+            "ACU": "T", "GCU": "A", "UCC": "S", "CCC": "P", "ACC": "T", "GCC": "A", "UCA": "S", "CCA": "P", "ACA": "T",
+            "GCA": "A", "UCG": "S", "CCG": "P", "ACG": "T", "GCG": "A", "UAU": "Y", "CAU": "H", "AAU": "N", "GAU": "D",
+            "UAC": "Y", "CAC": "H", "AAC": "N", "GAC": "D", "UAA": "Stop", "CAA": "Q", "AAA": "K", "GAA": "E",
+            "UAG": "Stop", "CAG": "Q", "AAG": "K", "GAG": "E", "UGU": "C", "CGU": "R", "AGU": "S", "GGU": "G",
+            "UGC": "C", "CGC": "R", "AGC": "S", "GGC": "G", "UGA": "Stop", "CGA": "R", "AGA": "R", "GGA": "G",
+            "UGG": "W", "CGG": "R", "AGG": "R", "GGG": "G"}
+print(orf(x, codon))
+
+
+
 ####PERM
 from itertools import permutations
 def perm(x):
