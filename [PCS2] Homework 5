@@ -220,6 +220,34 @@ print(sseq(x))
 
 
 ####LCSQ
+from itertools import product
+from collections import defaultdict
+def lcsq(x):
+    geneDict = {}
+    geneName = 'x'
+    fastaSeq = ''
+    for line in x:
+        if line[0] == '>':
+            geneDict.update({geneName: fastaSeq})
+            geneName = line[1:]
+            fastaSeq = ''
+        else:
+            fastaSeq += line
+    geneDict.update({geneName: fastaSeq})
+    geneDict.pop('x')
+    DNA = list(geneDict.values())
+    M = DNA[0]
+    N = DNA[1]
+    LCS = defaultdict(str)
+    for i, j in product(range(len(M)), range(len(N))):
+        if M[i] == N[j]:
+            LCS[(i, j)] = LCS[(i-1, j-1)] + M[i]
+        else:
+            LCS[(i, j)] = max(LCS[(i-1, j)], LCS[(i, j-1)], key=len)
+    return(LCS[len(M)-1, len(N)-1])
+
+
+
 ####ORF
 import re
 def orf(x, codon):
