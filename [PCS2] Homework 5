@@ -408,3 +408,8 @@ print(grph(x))
 
 
 ####INOD
+def inod(x):
+    nodes = x - 2
+    return(nodes)
+x = int(input())
+print(inod(x))
