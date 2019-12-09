@@ -148,6 +148,17 @@ print(hamm(x))
 
 
 ####TREE
+def tree(x):
+    n = x[0]
+    edgelst = x[1:]
+    nedges = len(edgelst)/2
+    minedges = int(n - nedges - 1)
+    return(minedges)
+x = list(map(int, input().split()))
+print(tree(x))
+
+
+
 ####PDST
 import itertools
 def pdst(x):
