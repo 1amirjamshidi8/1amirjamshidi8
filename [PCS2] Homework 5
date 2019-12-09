@@ -161,6 +161,7 @@ print(tree(x))
 
 ####PDST
 import itertools
+import math
 def pdst(x):
     geneDict = {}
     geneName = 'x'
@@ -176,7 +177,7 @@ def pdst(x):
     geneDict.pop('x')
     DNA = list(geneDict.values())
     length = len(DNA[0])
-    perms = list(itertools.product(DNA, repeat=2))
+    perms = list(itertools.product(DNA,repeat=2))
     lst = []
     for i in perms:
         M = i[0]
@@ -184,14 +185,17 @@ def pdst(x):
         count = 0
         for j in range(length):
             if M[j]!=N[j]:
-                count += 0.1
+                count+=1
         lst.append(count)
-    premat = []
-    for w in lst:
-        premat.append('{0:.5f}'.format(w))
-    matrix = [premat[ii:ii+4] for ii in range(0, len(premat), 4)]
-    for z in matrix:
-        print(*z)
+    lst2 = []
+    for j in lst:
+        lst2.append(j/length)
+    y = []
+    for i in lst2:
+        y.append('{0:.5f}'.format(i))
+    premet = [y[i:i+int(math.sqrt(len(y)))] for i in range(0, len(y), int(math.sqrt(len(y))))]
+    for i in premet:
+        print(*i)
     return('')
 x = list(map(str, input().split()))
 print(pdst(x))
